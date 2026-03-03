@@ -5,7 +5,7 @@ export const PROFILE = {
     tagline:
         "I build scalable systems that bridge business strategy with engineering execution.",
     github: "https://github.com/masterhasan095",
-    linkedin: "https://www.linkedin.com/in/your-linkedin/", // change this
+    linkedin: "https://www.linkedin.com/in/hasan-master/", // change this
     email: "masterhasan095@gmail.com", // change if needed
 };
 
