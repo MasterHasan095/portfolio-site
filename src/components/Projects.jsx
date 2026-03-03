@@ -43,7 +43,7 @@ export default function Projects() {
                             {/* If you don't have links, show a placeholder button */}
                             {!p.live && !p.github ? (
                                 <span className="text-xs text-white/40">
-                  (Add Live/GitHub links in <code>src/data/site.js</code>)
+                  {/*(Add Live/GitHub links in <code>src/data/site.js</code>)*/}
                 </span>
                             ) : null}
                         </div>

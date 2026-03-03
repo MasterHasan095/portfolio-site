@@ -37,9 +37,11 @@ export default function Hero() {
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                    <Button href="#projects" variant="primary">
-                        View Projects
-                    </Button>
+                    <a href="#projects">
+                        <Button href="#projects" variant="primary">
+                            View Projects
+                        </Button>
+                    </a>
                     <Button href={`mailto:${PROFILE.email}`} variant="ghost">
                         Contact
                     </Button>
