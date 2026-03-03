@@ -1,0 +1,53 @@
+:root {
+    /* Master intensity (0..1). Lower = less bright */
+    --glow: 0.55;
+
+    /* Glow blur & spread */
+    --glow-blur: 90px;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --glow: 0.33;
+        --glow-blur: 70px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --glow: 0.25;
+    }
+}
+
+.neon-glow {
+    position: absolute;
+    inset: -220px;
+    pointer-events: none;
+    opacity: var(--glow);
+    filter: blur(var(--glow-blur));
+    transform: translateZ(0);
+}
+
+.neon-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    /* Your “neon” but controlled */
+    background:
+            radial-gradient(circle at 18% 30%, rgba(0, 255, 200, 0.55), transparent 58%),
+            radial-gradient(circle at 78% 42%, rgba(0, 150, 255, 0.45), transparent 62%),
+            radial-gradient(circle at 55% 85%, rgba(0, 255, 170, 0.25), transparent 60%);
+}
+
+.readability-overlay {
+    position: absolute;
+    inset: 0;
+    /* dark overlay so text stays readable on all screens */
+    background: linear-gradient(
+            to bottom,
+            rgba(3, 6, 14, 0.70),
+            rgba(3, 6, 14, 0.55),
+            rgba(3, 6, 14, 0.80)
+    );
+}

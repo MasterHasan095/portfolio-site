@@ -1,28 +1,37 @@
+import Section from "./Section";
+import { EXPERIENCE } from "../data/site";
+
 export default function Experience() {
     return (
-        <section className="py-24 max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-12 text-primary">Experience</h2>
+        <Section
+            id="experience"
+            title="Experience"
+            subtitle="A quick timeline of roles and the impact I delivered."
+        >
+            <div className="space-y-4">
+                {EXPERIENCE.map((e) => (
+                    <div
+                        key={`${e.role}-${e.company}`}
+                        className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                    >
+                        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                            <div>
+                                <h3 className="text-base font-semibold text-white">{e.role}</h3>
+                                <p className="text-sm text-white/70">
+                                    {e.company} • {e.location}
+                                </p>
+                            </div>
+                            <p className="text-sm text-white/50">{e.dates}</p>
+                        </div>
 
-            <div className="space-y-8">
-                <div>
-                    <h3 className="text-xl font-semibold">Borderworx Logistics</h3>
-                    <p className="text-gray-400">Software Developer Co-op</p>
-                    <ul className="list-disc ml-6 mt-3 text-gray-400 space-y-2">
-                        <li>Maintained production logistics systems used by 25+ staff.</li>
-                        <li>Troubleshot API, database, and authentication issues.</li>
-                        <li>Supported secure RBAC systems using Auth0.</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 className="text-xl font-semibold">Skill Squirrel</h3>
-                    <p className="text-gray-400">Junior Programmer Intern</p>
-                    <ul className="list-disc ml-6 mt-3 text-gray-400 space-y-2">
-                        <li>Implemented features in agile environment.</li>
-                        <li>Debugged and optimized existing modules.</li>
-                    </ul>
-                </div>
+                        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/65">
+                            {e.bullets.map((b) => (
+                                <li key={b}>{b}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
             </div>
-        </section>
-    )
+        </Section>
+    );
 }

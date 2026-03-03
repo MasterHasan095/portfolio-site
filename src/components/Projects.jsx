@@ -1,34 +1,55 @@
-const projects = [
-    {
-        title: "PathSense",
-        desc: "Indoor navigation and event discovery system for Sheridan College. Team project led by me.",
-        stack: "React Native, Node.js, MongoDB, Mapbox, AWS"
-    },
-    {
-        title: "GetFixed IMS",
-        desc: "Inventory & retail management system for live physical stores.",
-        stack: "Angular, NestJS, PostgreSQL, Prisma, AWS"
-    },
-    {
-        title: "AI First Responder",
-        desc: "AI-powered emergency analysis system using ML pipelines.",
-        stack: "Flutter, FastAPI, XGBoost, PyTorch"
-    }
-]
+import Section from "./Section";
+import Badge from "./Badge";
+import Button from "./Button";
+import { PROJECTS } from "../data/site";
 
 export default function Projects() {
     return (
-        <section className="py-24 max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-12 text-primary">Featured Projects</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-                {projects.map((p, i) => (
-                    <div key={i} className="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-primary transition">
-                        <h3 className="text-xl font-semibold mb-2">{p.title}</h3>
-                        <p className="text-gray-400 mb-3">{p.desc}</p>
-                        <p className="text-sm text-primary">{p.stack}</p>
+        <Section
+            id="projects"
+            title="Featured Projects"
+            subtitle="A few things I’ve built recently. Each project focuses on practical business value and clean engineering."
+        >
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {PROJECTS.map((p) => (
+                    <div
+                        key={p.title}
+                        className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur"
+                    >
+                        <h3 className="text-base font-semibold text-white">{p.title}</h3>
+                        <p className="mt-1 text-sm text-white/70">{p.subtitle}</p>
+                        <p className="mt-3 text-sm leading-relaxed text-white/60">
+                            {p.description}
+                        </p>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                            {p.stack.map((s) => (
+                                <Badge key={s}>{s}</Badge>
+                            ))}
+                        </div>
+
+                        <div className="mt-5 flex flex-wrap gap-2">
+                            {p.live ? (
+                                <Button href={p.live} variant="primary">
+                                    Live
+                                </Button>
+                            ) : null}
+                            {p.github ? (
+                                <Button href={p.github} variant="ghost">
+                                    GitHub
+                                </Button>
+                            ) : null}
+
+                            {/* If you don't have links, show a placeholder button */}
+                            {!p.live && !p.github ? (
+                                <span className="text-xs text-white/40">
+                  (Add Live/GitHub links in <code>src/data/site.js</code>)
+                </span>
+                            ) : null}
+                        </div>
                     </div>
                 ))}
             </div>
-        </section>
-    )
+        </Section>
+    );
 }

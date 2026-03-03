@@ -1,21 +1,23 @@
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import Projects from "./components/Projects"
-import Experience from "./components/Experience"
-import TechStack from "./components/TechStack.jsx"
-import Contact from "./components/Contact"
-import Background from "./components/Background"
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function App() {
     return (
-        <div className="relative overflow-x-hidden">
-            <Background />
+        <div className="min-h-screen bg-[#050814] text-white">
             <Navbar />
-            <Hero />
-            <Projects />
-            <Experience />
-            <TechStack />
-            <Contact />
+            <main>
+                <Hero />
+                <Projects />
+                <Skills />
+                <Experience />
+                <Contact />
+            </main>
+            <Footer />
         </div>
-    )
+    );
 }
